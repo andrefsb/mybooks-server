@@ -31,9 +31,15 @@ function getLivro(req, res){
 function postLivro(req, res){
     try{
         const livroNovo = req.body;
-        insereLivro(livroNovo);
-        res.status(201);
-        res.send("Book successfully created!")
+
+        if(req.body.nome) {
+             insereLivro(livroNovo);
+             res.status(201);
+             res.send("Book successfully created!")
+         }else{
+            res.status(422);
+            res.send("Field name is mandatory.")
+         }
     }catch(error){
         res.status(500)
         res.send(error.message)
@@ -62,7 +68,7 @@ function patchLivro(req, res){
 function deleteLivro(req, res){
     try{
         const id = req.params.id;
-        
+
         if(id && Number(id)) {
             apagaLivro(id);
             res.send("Book successfully deleted!");
