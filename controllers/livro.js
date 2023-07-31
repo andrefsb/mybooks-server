@@ -3,10 +3,10 @@ const { getTodosLivros, getLivroPorId, insereLivro, modificaLivro, apagaLivro }=
 function getLivros(req, res){
     try{
         const livros = getTodosLivros();
-        res.send(livros)
+        res.send(livros);
     }catch(error){
-        res.status(500)
-        res.send(error.message)
+        res.status(500);
+        res.send(error.message);
     }
 }
 
@@ -15,16 +15,16 @@ function getLivro(req, res){
         const id = req.params.id;
 
         if(id && Number(id)) {
-            const livro = getLivroPorId(id)
-             res.send(livro)
+            const livro = getLivroPorId(id);
+             res.send(livro);
          }else{
             res.status(422);
-            res.send("Invalid Id.")
+            res.send("Invalid ID.");
          }
 
     }catch(error){
-        res.status(500)
-        res.send(error.message)
+        res.status(500);
+        res.send(error.message);
     }
 }
 
@@ -35,14 +35,14 @@ function postLivro(req, res){
         if(req.body.nome) {
              insereLivro(livroNovo);
              res.status(201);
-             res.send("Book successfully created!")
+             res.send("Book successfully created!");
          }else{
             res.status(422);
-            res.send("Field name is mandatory.")
+            res.send("Field name is mandatory.");
          }
     }catch(error){
-        res.status(500)
-        res.send(error.message)
+        res.status(500);
+        res.send(error.message);
     }
 }
 
@@ -56,12 +56,12 @@ function patchLivro(req, res){
             res.send("Book successfully altered!")
          }else{
             res.status(422);
-            res.send("Invalid Id.")
+            res.send("Invalid ID.");
          }
        
     }catch(error){
-        res.status(500)
-        res.send(error.message)
+        res.status(500);
+        res.send(error.message);
     }
 }
 
@@ -74,12 +74,12 @@ function deleteLivro(req, res){
             res.send("Book successfully deleted!");
          }else{
             res.status(422);
-            res.send("Invalid Id.")
+            res.send("Invalid ID.");
          }
         
     }catch(error){
-        res.status(500)
-        res.send(error.message)
+        res.status(500);
+        res.send(error.message);
     }
 }
 

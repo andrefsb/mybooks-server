@@ -1,11 +1,11 @@
 const { Router } = require("express");
-const { getFavoritos, postFavorito, deleteFavorito } = require("../controllers/favorito")
+const { getFavoritos, postFavorito, deleteFavorito } = require("../controllers/favorito");
 
 const router = Router();
 
 router.get('/', getFavoritos);
 
-router.post('/', postFavorito);
+router.post('/:id', postFavorito);
 
 router.delete('/:id', deleteFavorito);
 
